@@ -65,10 +65,20 @@ io.on('connection', (socket) => {
         //console.log("dt2 =" + sessionState);
         if (data.ledon){
             console.log("on =" + data.ledon);
-            request.post('http://rmalfer.ddns.net:3012/ledon', {form:{key:'value'}});
-        } else {
+            //request.post('http://rmalfer.ddns.net:3012/ledon', {form:{key:'value'}});
+            request('http://rmalfer.ddns.net:3012/ledon', function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    console.log(body) // Print the google web page.
+                }
+            });
+         } else {
             console.log("off =" + data.ledon);
-            request.post('http://rmalfer.ddns.net:3012/ledoff', {form:{key:'value'}});
+            //request.post('http://rmalfer.ddns.net:3012/ledoff', {form:{key:'value'}});
+            request('http://rmalfer.ddns.net:3012/ledoff', function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    console.log(body) // Print the google web page.
+                }
+            });    
         }
         
     });
