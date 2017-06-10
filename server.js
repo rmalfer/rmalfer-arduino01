@@ -68,7 +68,9 @@ io.on('connection', (socket) => {
             //request.post('http://rmalfer.ddns.net:3012/ledon', {form:{key:'value'}});
             request('http://rmalfer.ddns.net:3012/ledon', function (error, response, body) {
                 if (!error && response.statusCode == 200) {
-                    console.log(body) // Print the google web page.
+                    console.log(body)
+                } else {
+                    console.log("err? = " + body)
                 }
             });
          } else {
@@ -76,7 +78,9 @@ io.on('connection', (socket) => {
             //request.post('http://rmalfer.ddns.net:3012/ledoff', {form:{key:'value'}});
             request('http://rmalfer.ddns.net:3012/ledoff', function (error, response, body) {
                 if (!error && response.statusCode == 200) {
-                    console.log(body) // Print the google web page.
+                    console.log(body)
+                } else {
+                    console.log("err? = " + body)
                 }
             });    
         }
