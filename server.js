@@ -64,9 +64,10 @@ io.on('connection', (socket) => {
         socket.broadcast.emit('ExecActionRes', data);
         //console.log("dt2 =" + sessionState);
         if (data.ledon){
-            //console.log("on =" + data.ledon);
+            console.log("on =" + data.ledon);
             request.post('http://rmalfer.ddns.net:3012/ledon', {form:{key:'value'}});
         } else {
+            console.log("off =" + data.ledon);
             request.post('http://rmalfer.ddns.net:3012/ledoff', {form:{key:'value'}});
         }
         
