@@ -17,6 +17,7 @@ const express = require("express"),
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+var request = require('request');
 
 app.use(bodyParser.json());
 
@@ -61,6 +62,14 @@ io.on('connection', (socket) => {
     socket.on('ExecAction', (data) => {
         sessionState = JSON.stringify(data);
         socket.broadcast.emit('ExecActionRes', data);
+        //console.log("dt2 =" + sessionState);
+        if (data.ledon){
+            //console.log("on =" + data.ledon);
+            request.post('http://rmalfer.ddns.net:3012/ledon', {form:{key:'value'}});
+        } else {
+            request.post('http://rmalfer.ddns.net:3012/ledoff', {form:{key:'value'}});
+        }
+        
     });
 
     //Agum navegador entrou no socket? Envia page load

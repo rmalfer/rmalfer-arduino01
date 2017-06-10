@@ -29,6 +29,7 @@
         var socket = io.connect();
         var isServ ;
         //const adressLocal = 'http://localhost:3012';
+        //const adressWeb   = 'http://localhost:3000';
         const adressLocal = 'http://rmalfer.ddns.net:3012';
         const adressWeb   = 'https://rmalfer-arduino01.herokuapp.com/';
 
@@ -72,6 +73,8 @@
 
         // Executa a ação de resposta em BroadCast
         socket.on('ExecActionRes', function(dataAction){
+
+            //alert("Ola1");
             //Aqui eu comparo se estou na instancia isServ
             if(isServ){
                 var objpost = new ObjPost(adressLocal,dataAction)
@@ -82,12 +85,20 @@
         //funcao interna para enviar um post
         function enviaPost(dataPost){
 
+            //alert("Ola");
+
             var objForPost = {
                 url: dataPost.url,
                 type: "POST",
                 data: JSON.stringify(dataPost.data),
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
+                success: function(results) { 
+                   alert("ok:" + dataPost.data);
+                },
+                error: function(xhr, status, error) { 
+                   alert("err: " + dataPost.data);
+                }
             };
 
             $.ajax (objForPost);
@@ -118,6 +129,7 @@
 
                 }
                 socket.emit('ExecAction', objacoes);
+                //alert("ola = " + objacoes);
 
                 return false;
             });
