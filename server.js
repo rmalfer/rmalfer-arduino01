@@ -7,7 +7,8 @@ Responsavel por implementar rotas e socket.io server
 */
 
 const express = require("express"),
-    port = process.env.PORT || 3000,
+    //port = process.env.PORT || 3000,
+    port = 3000,
     fs = require('fs'),
     app = express(),
     io = require('socket.io').listen(app.listen(port)),
