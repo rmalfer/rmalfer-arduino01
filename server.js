@@ -72,6 +72,7 @@ io.on('connection', (socket) => {
                 } else {
                     console.log("err? = " + body)
                 }
+                console.log("BodyOn: " + body)
             });
          } else {
             console.log("off =" + data.ledon);
@@ -82,6 +83,7 @@ io.on('connection', (socket) => {
                 } else {
                     console.log("err? = " + body)
                 }
+                console.log("BodyOn: " + body)
             });    
         }
         
