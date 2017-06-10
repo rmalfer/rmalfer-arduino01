@@ -5,9 +5,9 @@ Script NodeJs Adaptado por Juscilan Moreto
 Responsavel por implementar rotas e socket.io server
 2016 © - juscilan.com‎
 */
-//port = process.env.PORT || 3000,
-const express = require("express"),    
-    port = 3000,
+
+const express = require("express"),
+    port = process.env.PORT || 3000,
     fs = require('fs'),
     app = express(),
     io = require('socket.io').listen(app.listen(port)),
